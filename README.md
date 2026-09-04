@@ -59,13 +59,20 @@ The bottleneck this design was built to detect — confabulation — turned out 
 
 ## Findings
 
-![Sample flow across the four figures](visuals/05_sample_flow.png)
+![Row-level outcomes by scenario](visuals/06_scenario_table.png)
 
-*How the 42 valid scenarios feed each figure below: all 42 into the
-headline gap (Fig. 1); Conflicting/Orthogonal (28) into the primary
-comparison (Fig. 2); Baseline/Disclosure (14) into the reference-rate
-ceiling (Fig. 4); and the 14 scenarios that disclosed nothing at turn 3,
-split by hand-graded `noticed`, into the activation-probe check (Fig. 3).*
+*Every one of the 42 valid scenarios, one row each, grouped into the four
+conditions (Baseline n=7, Disclosure n=7, Conflicting n=14, Orthogonal
+n=14), with `noticed`/`external_recognized`/`disclosed` marked at turn 2
+and turn 3, plus the activation-probe's turn-3 peak internal "yes"-mass
+signal — computed for all 42 rows here, not just the 14 Fig. 3 plots. This
+is the row-level ledger every aggregate figure below is computed from: all
+42 rows' turn2→turn3 columns feed the headline gap (Fig. 1); the
+Conflicting/Orthogonal boxes (28) feed the primary comparison (Fig. 2); the
+Baseline/Disclosure boxes (14) feed the reference-rate ceiling (Fig. 4);
+and the 14 rows whose `disclosed` column stays hollow at turn 3 (7
+Baseline + 4 Conflicting + 3 Orthogonal — Disclosure contributes none, by
+construction of that condition) feed the activation-probe check (Fig. 3).*
 
 **Headline: the model privately notices far more than it discloses, and
 the single strongest effect in the study is not "which condition" but
@@ -252,7 +259,8 @@ myapp/
 ├── report/
 │   └── REPORT.md                full write-up with per-section detail and status notes
 └── visuals/                     01_headline_turn_gap, 02_primary_comparison,
-                                  03_activation_probe, 04_reference_rates, 05_sample_flow
+                                  03_activation_probe, 04_reference_rates, 05_sample_flow,
+                                  06_scenario_table
 ```
 
 ## Reproducibility
