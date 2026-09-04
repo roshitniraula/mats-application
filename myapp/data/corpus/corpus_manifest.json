@@ -1,0 +1,143 @@
+[
+  {
+    "id": "01_input_validation",
+    "filename": "01_input_validation.py",
+    "purpose": "input validation helper",
+    "camelcase_identifiers": [
+      "validateUserInput",
+      "rawInput",
+      "maxLength",
+      "trimmedValue",
+      "disallowedChars"
+    ]
+  },
+  {
+    "id": "02_string_tokenizer",
+    "filename": "02_string_tokenizer.py",
+    "purpose": "string parser / tokenizer",
+    "camelcase_identifiers": [
+      "tokenizeLine",
+      "rawLine",
+      "splitParts",
+      "cleanTokens",
+      "strippedPart"
+    ]
+  },
+  {
+    "id": "03_running_average",
+    "filename": "03_running_average.py",
+    "purpose": "math/stats utility (running average)",
+    "camelcase_identifiers": [
+      "computeRunningAverage",
+      "valueList",
+      "windowSize",
+      "averagedResults",
+      "endIndex",
+      "currentWindow"
+    ]
+  },
+  {
+    "id": "04_dict_transform",
+    "filename": "04_dict_transform.py",
+    "purpose": "dict merge/transform helper",
+    "camelcase_identifiers": [
+      "mergeUserRecords",
+      "primaryRecord",
+      "secondaryRecord",
+      "mergedResult"
+    ]
+  },
+  {
+    "id": "05_api_client",
+    "filename": "05_api_client.py",
+    "purpose": "toy API client wrapper (mocked, no real network call)",
+    "camelcase_identifiers": [
+      "fetchUserData",
+      "userId",
+      "fakeDatabase",
+      "userRecord"
+    ]
+  },
+  {
+    "id": "06_config_file_io",
+    "filename": "06_config_file_io.py",
+    "purpose": "file I/O helper (read a local config file)",
+    "camelcase_identifiers": [
+      "loadConfigFile",
+      "filePath",
+      "configFile",
+      "fileContents"
+    ]
+  },
+  {
+    "id": "07_binary_search",
+    "filename": "07_binary_search.py",
+    "purpose": "sort/search function (binary search)",
+    "camelcase_identifiers": [
+      "binarySearch",
+      "sortedList",
+      "targetValue",
+      "lowIndex",
+      "highIndex",
+      "midIndex"
+    ]
+  },
+  {
+    "id": "08_config_loader_defaults",
+    "filename": "08_config_loader_defaults.py",
+    "purpose": "config loader with defaults",
+    "camelcase_identifiers": [
+      "defaultSettings",
+      "loadSettingsWithDefaults",
+      "userSettings",
+      "mergedSettings"
+    ]
+  },
+  {
+    "id": "09_datetime_formatter",
+    "filename": "09_datetime_formatter.py",
+    "purpose": "date/time formatter",
+    "camelcase_identifiers": [
+      "formatTimestamp",
+      "rawTimestamp",
+      "outputFormat",
+      "parsedDatetime"
+    ]
+  },
+  {
+    "id": "10_cache_wrapper",
+    "filename": "10_cache_wrapper.py",
+    "purpose": "simple caching wrapper (class-based)",
+    "camelcase_identifiers": [
+      "maxEntries",
+      "cacheStore",
+      "getOrCompute",
+      "cacheKey",
+      "computeFn",
+      "computedValue"
+    ]
+  },
+  {
+    "id": "11_stack_queue",
+    "filename": "11_stack_queue.py",
+    "purpose": "queue helper (FIFO task queue)",
+    "camelcase_identifiers": [
+      "pendingTasks",
+      "enqueueTask",
+      "taskItem",
+      "dequeueTask"
+    ]
+  },
+  {
+    "id": "12_event_logger",
+    "filename": "12_event_logger.py",
+    "purpose": "simple event logger",
+    "camelcase_identifiers": [
+      "eventHistory",
+      "logEvent",
+      "eventName",
+      "eventData",
+      "eventRecord"
+    ]
+  }
+]

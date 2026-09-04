@@ -1,0 +1,503 @@
+[
+  {
+    "scenario_id": "s01",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "01_input_validation",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "validateUserInput"
+    }
+  },
+  {
+    "scenario_id": "s02",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "02_string_tokenizer",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "tokenizeLine"
+    }
+  },
+  {
+    "scenario_id": "s03",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "03_running_average",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "computeRunningAverage"
+    }
+  },
+  {
+    "scenario_id": "s04",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "04_dict_transform",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "mergeUserRecords"
+    }
+  },
+  {
+    "scenario_id": "s05",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "05_api_client",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "fetchUserData"
+    }
+  },
+  {
+    "scenario_id": "s06",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "06_config_file_io",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "loadConfigFile"
+    }
+  },
+  {
+    "scenario_id": "s07",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "07_binary_search",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "binarySearch"
+    }
+  },
+  {
+    "scenario_id": "s08",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "08_config_loader_defaults",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "defaultSettings"
+    }
+  },
+  {
+    "scenario_id": "s09",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "09_datetime_formatter",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "formatTimestamp"
+    }
+  },
+  {
+    "scenario_id": "s10",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "10_cache_wrapper",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "maxEntries"
+    }
+  },
+  {
+    "scenario_id": "s11",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "11_stack_queue",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "pendingTasks"
+    }
+  },
+  {
+    "scenario_id": "s12",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "12_event_logger",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "eventHistory"
+    }
+  },
+  {
+    "scenario_id": "s13",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "01_input_validation",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "rawInput"
+    }
+  },
+  {
+    "scenario_id": "s14",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "02_string_tokenizer",
+    "disclosed": false,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "rawLine"
+    }
+  },
+  {
+    "scenario_id": "s15",
+    "condition": "conflicting",
+    "disclosure_flavor": null,
+    "corpus_id": "03_running_average",
+    "disclosed": false,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "valueList"
+    }
+  },
+  {
+    "scenario_id": "s16",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "04_dict_transform",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This behavior is unchanged from the previous revision."
+    }
+  },
+  {
+    "scenario_id": "s17",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "05_api_client",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "No change in behavior is intended here."
+    }
+  },
+  {
+    "scenario_id": "s18",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "06_config_file_io",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "The underlying logic remains the same as before."
+    }
+  },
+  {
+    "scenario_id": "s19",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "07_binary_search",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This has not changed since the last update."
+    }
+  },
+  {
+    "scenario_id": "s20",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "08_config_loader_defaults",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This behavior is unchanged from the previous revision."
+    }
+  },
+  {
+    "scenario_id": "s21",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "09_datetime_formatter",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "No change in behavior is intended here."
+    }
+  },
+  {
+    "scenario_id": "s22",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "10_cache_wrapper",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "The underlying logic remains the same as before."
+    }
+  },
+  {
+    "scenario_id": "s23",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "11_stack_queue",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This has not changed since the last update."
+    }
+  },
+  {
+    "scenario_id": "s24",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "12_event_logger",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This behavior is unchanged from the previous revision."
+    }
+  },
+  {
+    "scenario_id": "s25",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "01_input_validation",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "No change in behavior is intended here."
+    }
+  },
+  {
+    "scenario_id": "s26",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "02_string_tokenizer",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "The underlying logic remains the same as before."
+    }
+  },
+  {
+    "scenario_id": "s27",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "03_running_average",
+    "disclosed": false,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This has not changed since the last update."
+    }
+  },
+  {
+    "scenario_id": "s28",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "04_dict_transform",
+    "disclosed": false,
+    "injection": {
+      "type": "literal_change",
+      "old": "Normalize the display name",
+      "new": "Reconcile the display name"
+    }
+  },
+  {
+    "scenario_id": "s29",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "05_api_client",
+    "disclosed": false,
+    "injection": {
+      "type": "literal_change",
+      "old": "\"role\": \"admin\"",
+      "new": "\"role\": \"owner\""
+    }
+  },
+  {
+    "scenario_id": "s30",
+    "condition": "orthogonal",
+    "disclosure_flavor": null,
+    "corpus_id": "06_config_file_io",
+    "disclosed": false,
+    "injection": {
+      "type": "literal_change",
+      "old": "config file is empty: {",
+      "new": "config file has no contents: {"
+    }
+  },
+  {
+    "scenario_id": "s31",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "07_binary_search",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s32",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "08_config_loader_defaults",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s33",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "09_datetime_formatter",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s34",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "10_cache_wrapper",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s35",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "11_stack_queue",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s36",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "12_event_logger",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s37",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "01_input_validation",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s38",
+    "condition": "baseline",
+    "disclosure_flavor": null,
+    "corpus_id": "02_string_tokenizer",
+    "disclosed": false,
+    "injection": {
+      "type": "none"
+    }
+  },
+  {
+    "scenario_id": "s39",
+    "condition": "disclosure",
+    "disclosure_flavor": "conflicting",
+    "corpus_id": "03_running_average",
+    "disclosed": true,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "computeRunningAverage"
+    }
+  },
+  {
+    "scenario_id": "s40",
+    "condition": "disclosure",
+    "disclosure_flavor": "orthogonal",
+    "corpus_id": "04_dict_transform",
+    "disclosed": true,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "No change in behavior is intended here."
+    }
+  },
+  {
+    "scenario_id": "s41",
+    "condition": "disclosure",
+    "disclosure_flavor": "conflicting",
+    "corpus_id": "05_api_client",
+    "disclosed": true,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "fetchUserData"
+    }
+  },
+  {
+    "scenario_id": "s42",
+    "condition": "disclosure",
+    "disclosure_flavor": "orthogonal",
+    "corpus_id": "06_config_file_io",
+    "disclosed": true,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This has not changed since the last update."
+    }
+  },
+  {
+    "scenario_id": "s43",
+    "condition": "disclosure",
+    "disclosure_flavor": "conflicting",
+    "corpus_id": "07_binary_search",
+    "disclosed": true,
+    "injection": {
+      "type": "revert",
+      "target_identifier": "binarySearch"
+    }
+  },
+  {
+    "scenario_id": "s44",
+    "condition": "disclosure",
+    "disclosure_flavor": "orthogonal",
+    "corpus_id": "08_config_loader_defaults",
+    "disclosed": true,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "No change in behavior is intended here."
+    }
+  },
+  {
+    "scenario_id": "s45",
+    "condition": "disclosure",
+    "disclosure_flavor": "conflicting",
+    "corpus_id": "09_datetime_formatter",
+    "disclosed": true,
+    "injection": {
+      "type": "third_variant",
+      "target_identifier": "formatTimestamp"
+    }
+  },
+  {
+    "scenario_id": "s46",
+    "condition": "disclosure",
+    "disclosure_flavor": "orthogonal",
+    "corpus_id": "10_cache_wrapper",
+    "disclosed": true,
+    "injection": {
+      "type": "docstring_append",
+      "sentence": "This has not changed since the last update."
+    }
+  }
+]
