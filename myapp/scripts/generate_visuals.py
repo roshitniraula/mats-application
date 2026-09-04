@@ -5,18 +5,24 @@ task, not a project-wide dependency):
 
     scripts/.viz-venv/bin/python3 scripts/generate_visuals.py
 
-Four figures, each chosen to carry a distinct, load-bearing part of the
-paper's argument rather than restating a table. Cut after a first-draft
-review: the full 42x12 classification heatmap (redundant with the
-Results tables and unreadable at a glance) and the revert-vs-third-variant
-secondary split (already fully tabulated in Results, and the weakest,
-most caveated finding in the study - not worth a fifth chart's worth of
-reader attention). What's left:
+Each figure is chosen to carry a distinct, load-bearing part of the paper's
+argument rather than restating a table. Cut after a first-draft review: the
+full 42x12 classification heatmap (redundant with the Results tables and
+unreadable at a glance) and the revert-vs-third-variant secondary split
+(already fully tabulated in Results, and the weakest, most caveated finding
+in the study - not worth a chart's worth of reader attention). What's left:
   1. headline_turn_gap    - the study's strongest result
   2. primary_comparison   - why the planned primary test wasn't significant
   3. activation_probe     - independent mechanistic corroboration
   4. reference_rates      - false-positive floor & best-case ceiling
   5. sample_flow          - accounting for how the 42 scenarios feed 1-4
+  6. scenario_table       - row-level verification: the joint outcome per
+                            scenario that 1-4 each show only a slice of.
+                            Narrower than the cut classification heatmap
+                            (3 variables, not 6) and built for a different
+                            job - auditing the causal chain end to end, not
+                            headlining a result - so it's sized to be read
+                            closely rather than skimmed at a glance.
 """
 import sys
 from pathlib import Path
@@ -307,6 +313,93 @@ def fig5_sample_flow(data, probe):
 
 
 # ---------------------------------------------------------------------------
+def fig6_scenario_table(data, probe):
+    """One row per scenario, the joint outcome that figs 1-4 each show only
+    a marginal slice of - added so a careful reader can trace the aggregate
+    stats back to individual scenarios without re-deriving them from the
+    raw xlsx. Grouped into one bordered box per condition (Baseline and
+    Disclosure on top, Conflicting and Orthogonal below - the same 2x2
+    logic as the sample-flow diagram) rather than an arbitrary split, so
+    each box is a self-contained, sortable unit."""
+    LH = 0.24
+    box_w, gap_x, gap_y = 3.9, 0.5, 0.35
+    left_x, right_x = 0.25, 0.25 + box_w + gap_x
+
+    def box_h(n_rows):
+        return 0.15 * 2 + (3 + n_rows) * LH  # pad + title/header/subheader + rows
+
+    by_cond = {c: sorted([e for e in data if e["condition"] == c], key=lambda e: e["scenario_id"])
+               for c in ["baseline", "disclosure", "conflicting", "orthogonal"]}
+    h_top = box_h(len(by_cond["baseline"]))
+    h_bottom = box_h(len(by_cond["conflicting"]))
+    title_margin, bottom_margin = 0.5, 0.6
+    fig_h = title_margin + h_top + gap_y + h_bottom + bottom_margin
+    fig_w = right_x + box_w + 0.25
+
+    fig, ax = plt.subplots(figsize=(fig_w * 1.15, fig_h))
+    ax.set_xlim(0, fig_w)
+    ax.set_ylim(0, fig_h)
+    ax.axis("off")
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.995, bottom=0.005)
+
+    def dot(x, y, val):
+        if val:
+            ax.scatter([x], [y], s=36, color=INK, zorder=3)
+        else:
+            ax.scatter([x], [y], s=36, facecolor="none", edgecolor=HAIR_STRONG, linewidth=1.0, zorder=3)
+
+    def draw_box(x0, y_top, condition, entries):
+        n_rows = len(entries)
+        h = box_h(n_rows)
+        ax.add_patch(FancyBboxPatch((x0, y_top - h), box_w, h,
+                                     boxstyle="round,pad=0.02,rounding_size=0.06",
+                                     facecolor=SURFACE, edgecolor=CONDITION_COLOR[condition],
+                                     linewidth=1.4, zorder=2))
+        id_x = x0 + 0.3
+        t2x = [x0 + 1.0, x0 + 1.3, x0 + 1.6]
+        t3x = [x0 + 2.1, x0 + 2.4, x0 + 2.7]
+        sig_x = x0 + 3.2
+
+        y = y_top - 0.15 - LH / 2
+        ax.text(x0 + box_w / 2, y, f"{CONDITION_LABEL[condition]} (n={n_rows})", ha="center", va="center",
+                fontsize=10, fontweight="bold", color=CONDITION_COLOR[condition])
+        y -= LH
+        ax.text(id_x, y, "ID", fontsize=7.8, color=INK_3, weight="bold", ha="left", va="center")
+        ax.text(sum(t2x) / 3, y, "Turn 2", fontsize=7.8, color=INK_3, weight="bold", ha="center", va="center")
+        ax.text(sum(t3x) / 3, y, "Turn 3", fontsize=7.8, color=INK_3, weight="bold", ha="center", va="center")
+        ax.text(sig_x, y, "Signal", fontsize=7.8, color=INK_3, weight="bold", ha="left", va="center")
+        y -= LH
+        for xs in (t2x, t3x):
+            for x, lbl in zip(xs, "NAD"):
+                ax.text(x, y, lbl, fontsize=6.8, color=INK_3, ha="center", va="center")
+
+        for i, e in enumerate(entries):
+            y -= LH
+            ax.text(id_x, y, e["scenario_id"], fontsize=7.6, color=INK_2, ha="left", va="center", family="monospace")
+            dot(t2x[0], y, e["turn2_noticed"]); dot(t2x[1], y, e["turn2_external_recognized"]); dot(t2x[2], y, e["turn2_disclosed"])
+            dot(t3x[0], y, e["turn3_noticed"]); dot(t3x[1], y, e["turn3_external_recognized"]); dot(t3x[2], y, e["turn3_disclosed"])
+            sig = float(probe[(e["scenario_id"], "turn3")]["peak_yes_mass"])
+            ax.text(sig_x, y, f"{sig:.2f}", fontsize=7.6, color=INK_2, ha="left", va="center")
+
+    ax.text(fig_w / 2, fig_h - 0.22, f"Row-Level Outcomes by Scenario (N={len(data)})",
+            ha="center", fontsize=13, fontweight="bold", color=INK)
+
+    top_y = fig_h - title_margin
+    draw_box(left_x, top_y, "baseline", by_cond["baseline"])
+    draw_box(right_x, top_y, "disclosure", by_cond["disclosure"])
+    bottom_top_y = top_y - h_top - gap_y
+    draw_box(left_x, bottom_top_y, "conflicting", by_cond["conflicting"])
+    draw_box(right_x, bottom_top_y, "orthogonal", by_cond["orthogonal"])
+
+    ax.text(fig_w / 2, bottom_top_y - h_bottom - 0.18,
+            "● observed   ○ not observed   N noticed · A externally attributed · D disclosed\n"
+            "Signal = turn 3 peak internal “yes” mass (logit-lens; raw mass, not a calibrated probability - can exceed 1.0)",
+            ha="center", va="top", fontsize=8, color=INK_3)
+    savefig(fig, "06_scenario_table.png")
+    plt.close(fig)
+
+
+# ---------------------------------------------------------------------------
 def main():
     apply_style()
     data = load_graded_data()
@@ -318,7 +411,8 @@ def main():
     fig3_activation_probe(data)
     fig4_reference_rates(data)
     fig5_sample_flow(data, probe)
-    print("\nAll 5 figures written to visuals/.")
+    fig6_scenario_table(data, probe)
+    print("\nAll 6 figures written to visuals/.")
 
 
 if __name__ == "__main__":
