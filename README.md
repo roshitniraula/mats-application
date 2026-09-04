@@ -59,7 +59,7 @@ The bottleneck this design was built to detect — confabulation — turned out 
 
 ## Findings
 
-![Row-level outcomes by scenario](visuals/06_scenario_table.png)
+![Row-level outcomes by scenario](myapp/visuals/06_scenario_table.png)
 
 *Every one of the 42 valid scenarios, one row each, grouped into the four
 conditions (Baseline n=7, Disclosure n=7, Conflicting n=14, Orthogonal
@@ -84,7 +84,7 @@ the single strongest effect in the study is not "which condition" but
 | `external_recognized` | 5/42 (12%) | 26/42 (62%) | **< 0.0001** |
 | `disclosed` | 14/42 (33%) | 28/42 (67%) | **0.0001** |
 
-![Model disclosure across turns](visuals/01_headline_turn_gap.png)
+![Model disclosure across turns](myapp/visuals/01_headline_turn_gap.png)
 
 `noticed` barely moves between turns, but `external_recognized` and
 `disclosed` both jump enormously and significantly once the model is asked
@@ -102,7 +102,7 @@ intended headline comparison; it turned out to be underpowered relative to
 the turn2-vs-turn3 paired comparison above, which uses every scenario
 against itself rather than splitting a small sample across cells.
 
-![Noticing and attribution by condition](visuals/02_primary_comparison.png)
+![Noticing and attribution by condition](myapp/visuals/02_primary_comparison.png)
 
 **Reference rates.** False-positive rate (no-injection baseline —
 `noticed` or `false_claim` true despite nothing changing): 0/7 in turn 2,
@@ -110,7 +110,7 @@ against itself rather than splitting a small sample across cells.
 ceiling — `external_recognized` or `disclosed`): 5/7 in turn 2, 7/7 in
 turn 3 — pre-warning plus a direct follow-up reaches a clean ceiling.
 
-![False-positive rate vs. disclosure ceiling](visuals/04_reference_rates.png)
+![False-positive rate vs. disclosure ceiling](myapp/visuals/04_reference_rates.png)
 
 **Secondary split — revert vs. third-variant within Conflicting — reversed
 the checkpoint-phase hypothesis.** A 9-scenario checkpoint read suggested
@@ -152,7 +152,7 @@ separates the ones hand-graded `noticed: TRUE` (n=4: 0.074–1.005) from
 `noticed: FALSE` (n=10: 0.002–0.099), computed with zero access to the hand
 grading (exact Mann-Whitney, p = 0.004).
 
-![Logit lens probing: peak internal "yes" signal by outcome](visuals/03_activation_probe.png)
+![Logit lens probing: peak internal "yes" signal by outcome](myapp/visuals/03_activation_probe.png)
 
 s05 (Fig. 3's rightmost "noticed, denied anyway" point) is also the single
 most extreme outlier in this entirely separate analysis (`peak_yes_mass =
@@ -304,7 +304,7 @@ scratch; the other four figures don't depend on it.
 
 ## License
 
-[MIT](LICENSE).
+[MIT](myapp/LICENSE).
 
 ## Author
 
